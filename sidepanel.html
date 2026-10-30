@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voice AI</title>
+<link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+<header class="header">
+  <h1 class="title">Voice AI</h1>
+  <button id="settingsButton" class="text-button" type="button">Settings</button>
+</header>
+<p id="stateBanner" class="state-banner" aria-live="polite">Idle</p>
+
+<main id="mainView">
+  <div class="lang" role="group" aria-label="Language">
+    <button id="langHindi" class="lang-button" type="button" aria-pressed="false">Hindi</button>
+    <button id="langHinglish" class="lang-button" type="button" aria-pressed="false">Hinglish</button>
+    <button id="langEnglish" class="lang-button" type="button" aria-pressed="true">English</button>
+  </div>
+
+  <section id="hintSection" class="hint">
+    <p>Press the mic and speak, after choosing Hindi, Hinglish or English above.</p>
+    <p class="hint-small">Works on muse.ai, ChatGPT, Gemini, Claude, Copilot, Perplexity and Grok, when you are signed in there. New sites are draft adapters, not live-verified yet.</p>
+  </section>
+
+  <section id="transcriptSection" class="group hidden" aria-label="Transcript">
+    <p id="transcriptText" class="body-text"></p>
+  </section>
+
+  <section id="reviewSection" class="group hidden" aria-label="Review your message">
+    <label class="field-label" for="reviewField">Review your message</label>
+    <textarea id="reviewField" class="review-field" rows="5"></textarea>
+    <p id="countdownText" class="footnote">5 seconds left to send</p>
+    <button id="sendNowButton" class="primary-button" type="button">Send now</button>
+    <button id="cancelButton" class="secondary-button" type="button">Cancel</button>
+    <button id="aurBoloButton" class="text-button" type="button">Aur bolo</button>
+  </section>
+
+  <section id="replySection" class="group hidden" aria-label="Reply">
+    <div id="replyText" class="body-text"></div>
+  </section>
+
+  <section id="errorSection" class="group hidden" aria-label="Error">
+    <p id="errorText" class="body-text"></p>
+    <p id="errorHint" class="footnote"></p>
+    <button id="errorBackButton" class="primary-button" type="button">Back to idle</button>
+  </section>
+</main>
+
+<main id="settingsView" class="hidden">
+  <button id="backButton" class="text-button" type="button">Back</button>
+  <div class="setting-row">
+    <label class="body-text" for="voiceSelect">Voice</label>
+    <select id="voiceSelect" class="select"></select>
+  </div>
+  <p id="voiceNameText" class="footnote"></p>
+  <div class="setting-row">
+    <label class="body-text" for="rateSlider">Rate</label>
+    <input id="rateSlider" class="slider" type="range" min="0.5" max="2" step="0.1" value="1">
+    <span id="rateValue" class="footnote">1.0x</span>
+  </div>
+  <div class="setting-row">
+    <label class="body-text" for="pitchSlider">Pitch (custom voice tone)</label>
+    <input id="pitchSlider" class="slider" type="range" min="0.5" max="2" step="0.1" value="1">
+    <span id="pitchValue" class="footnote">1.0</span>
+  </div>
+  <div class="setting-row">
+    <label class="body-text" for="volumeSlider">Volume</label>
+    <input id="volumeSlider" class="slider" type="range" min="0" max="1" step="0.1" value="1">
+    <span id="volumeValue" class="footnote">100%</span>
+  </div>
+  <div class="setting-row">
+    <label class="body-text" for="customVoiceToggle">Custom voice (ElevenLabs)</label>
+    <input id="customVoiceToggle" class="toggle" type="checkbox">
+  </div>
+  <div class="setting-row">
+    <label class="body-text" for="elevenApiKey">ElevenLabs API key</label>
+    <input id="elevenApiKey" class="select" type="password" placeholder="Paste key here, never in chat">
+  </div>
+  <div class="setting-row">
+    <label class="body-text" for="elevenVoiceId">ElevenLabs Voice ID</label>
+    <input id="elevenVoiceId" class="select" type="text" placeholder="Voice ID from ElevenLabs">
+  </div>
+  <button id="testCustomVoiceButton" class="secondary-button" type="button">Test custom voice</button>
+  <p class="footnote">Custom voice is off by default. When on, reply text is sent to ElevenLabs to make audio in that one voice, for Hindi, Hinglish and English. The key stays in this browser only. No reel voice is built in: you must first clone a voice you own in ElevenLabs and paste its Voice ID here.</p>
+  <div class="setting-row">
+    <label class="body-text" for="autoOpenToggle">Auto-open panel</label>
+    <input id="autoOpenToggle" class="toggle" type="checkbox" checked>
+  </div>
+  <p class="footnote">Settings are saved on this browser only. No transcript or audio is saved.</p>
+</main>
+
+<footer class="controls">
+  <button id="doneButton" class="text-button hidden" type="button">Done</button>
+  <button id="stopButton" class="stop-button hidden" type="button">Stop</button>
+  <button id="micButton" class="mic-button" type="button" aria-label="Start listening">
+    <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3" fill="currentColor"/><path d="M5 11a7 7 0 0 0 14 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 18v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  </button>
+</footer>
+<script src="sidepanel.js"></script>
+</body>
+</html>

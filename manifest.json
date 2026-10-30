@@ -1,0 +1,112 @@
+{
+  "action": {
+    "default_title": "Voice AI"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "adapters/muse.js",
+        "content.js"
+      ],
+      "matches": [
+        "https://muse.ai/*"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "js": [
+        "adapters/chatgpt.js",
+        "content.js"
+      ],
+      "matches": [
+        "https://chatgpt.com/*",
+        "https://chat.openai.com/*"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "js": [
+        "adapters/gemini.js",
+        "content.js"
+      ],
+      "matches": [
+        "https://gemini.google.com/*"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "js": [
+        "adapters/claude.js",
+        "content.js"
+      ],
+      "matches": [
+        "https://claude.ai/*"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "js": [
+        "adapters/copilot.js",
+        "content.js"
+      ],
+      "matches": [
+        "https://copilot.microsoft.com/*"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "js": [
+        "adapters/perplexity.js",
+        "content.js"
+      ],
+      "matches": [
+        "https://www.perplexity.ai/*",
+        "https://perplexity.ai/*"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "js": [
+        "adapters/grok.js",
+        "content.js"
+      ],
+      "matches": [
+        "https://grok.com/*"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "description": "Talk to muse.ai by voice, hands-free, from the side panel.",
+  "host_permissions": [
+    "https://muse.ai/*",
+    "https://chatgpt.com/*",
+    "https://chat.openai.com/*",
+    "https://gemini.google.com/*",
+    "https://claude.ai/*",
+    "https://copilot.microsoft.com/*",
+    "https://www.perplexity.ai/*",
+    "https://perplexity.ai/*",
+    "https://grok.com/*",
+    "https://api.elevenlabs.io/*"
+  ],
+  "icons": {
+    "128": "icons/icon128.png",
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png"
+  },
+  "manifest_version": 3,
+  "minimum_chrome_version": "114",
+  "name": "Voice AI",
+  "permissions": [
+    "sidePanel",
+    "storage",
+    "offscreen"
+  ],
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "version": "0.2.2"
+}
