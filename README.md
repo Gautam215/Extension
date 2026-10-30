@@ -36,7 +36,7 @@ Version in this repo: **0.2.2**. Chrome 114 or newer, desktop only.
    ("Isme code hai, panel me dekh lo" in Hindi/Hinglish).
    Stop cancels listening, waiting, and speaking.
 
-Nothing is saved by the extension except five settings in
+Nothing is saved by the extension except settings in
 `chrome.storage.local`: language, voice, rate, volume, pitch, and
 auto-open, plus the optional custom-voice fields below. No transcript
 or audio is stored.
@@ -121,7 +121,10 @@ on, reply text is sent to ElevenLabs to make audio.
   `adapters/perplexity.js`, `adapters/grok.js` — draft adapters.
 - `offscreen.html`, `offscreen.js` — microphone and speech
   recognition, via Chrome's offscreen USER_MEDIA route.
-- `icons/` — extension icons.
+- `icons/` — not in this push. PNG icons cannot go through the
+  text-only snapshot push used here, so add the local `icons/`
+  files after cloning, before Load unpacked, or Chrome will warn
+  about missing icons.
 
 No build step, no framework, no server, no database. Plain
 HTML, CSS, and JavaScript.
